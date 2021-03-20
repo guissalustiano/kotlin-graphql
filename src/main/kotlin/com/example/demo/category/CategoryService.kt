@@ -2,29 +2,31 @@ package com.example.demo.category
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.util.*
 import reactor.core.publisher.Mono
 import reactor.core.publisher.Flux
 
 @Service
+@Transactional
 class CategoryService(
     @Autowired
-    private var repository: CategoryRepository
+    private val repository: CategoryRepository
 ) {
 
-    fun getAll(): Flux<CategoryEntity> {
-        return repository.findAll().switchIfEmpty(Flux.empty())
+    fun findAll(): MutableIterable<CategoryEntity> {
+        return repository.findAll()
     }
 
-    fun getById(id: UUID): Mono<CategoryEntity> {
-        return repository.findById(id)
+    fun findById(id: UUID): CategoryEntity {
+        return repository.findById(id).orElseThrow{CategoryNotFoundException(id)}
     }
 
-    fun save(CategoryEntity: CategoryEntity): Mono<CategoryEntity> {
+    fun save(CategoryEntity: CategoryEntity): CategoryEntity {
         return repository.save(CategoryEntity)
     }
 
-    fun delete(id: UUID): Mono<Void> {
+    fun delete(id: UUID) {
         return repository.deleteById(id)
     }
 

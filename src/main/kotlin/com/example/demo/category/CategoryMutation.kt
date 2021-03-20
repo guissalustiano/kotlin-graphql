@@ -1,16 +1,19 @@
 package com.example.demo.category
 
+import com.example.demo.base.DeletePayload
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.types.operations.Mutation
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
-class CategoryMutation : Mutation {
-    private val data: MutableList<String> = mutableListOf()
+class CategoryMutation(private val service: CategoryService) : Mutation {
+    fun saveCategory(category: CategoryEntity): CategoryEntity {
+        return service.save(category)
+    }
 
-    @GraphQLDescription("add value to a list and return resulting list")
-    fun addToList(entry: String): MutableList<String> {
-        data.add(entry)
-        return data
+    fun deleteCategory(id: UUID): DeletePayload {
+        service.delete(id)
+        return DeletePayload()
     }
 }

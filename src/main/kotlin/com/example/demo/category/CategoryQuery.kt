@@ -15,19 +15,15 @@ class CategoryQuery(private val service: CategoryService): Query {
 import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.types.operations.Query
 import org.springframework.stereotype.Component
-import java.util.Random
-
-data class CategoryPayload(
-    var name: String
-)
+import java.util.*
 
 @Component
-class CategoryQuery : Query {
-    fun categories(): List<CategoryEntity> = listOf(CategoryEntity(name = "category bla bla"))
+class CategoryQuery(private val service: CategoryService) : Query {
+    fun findCategories(): List<CategoryEntity> {
+        return service.findAll().toList()
+    }
 
-    @GraphQLDescription("generates pseudo random list of ints")
-    fun generateList(): List<Int> {
-        val random = Random()
-        return (1..10).map { random.nextInt(100) }.toList()
+    fun findCategory(id: UUID): CategoryEntity {
+        return service.findById(id)
     }
 }

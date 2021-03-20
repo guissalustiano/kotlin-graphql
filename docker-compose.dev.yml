@@ -1,24 +1,14 @@
 version: '3.9' # optional since v1.27.0
 services:
-  mongo:
-    image: mongo
-    restart: always
+  db:
+    image: postgres
     ports:
-      - 27017:27017
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      - '5432:5432'
     volumes:
-      - dbvolume:/data/db
-  mongo-express:
-    image: mongo-express
-    ports:
-      - 8081:8081
+      - dbvolume:/var/lib/postgresql/data
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: root
-    links:
-      - mongo
-
+      POSTGRES_USER: 'root'
+      POSTGRES_PASSWORD: 'root'
+      POSTGRES_DB: 'graphql'
 volumes:
   dbvolume: {}
