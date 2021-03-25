@@ -12,7 +12,6 @@ class CategoryQuery(private val service: CategoryService): Query {
 }
  */
 
-import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.types.operations.Query
 import org.springframework.stereotype.Component
 import java.util.*

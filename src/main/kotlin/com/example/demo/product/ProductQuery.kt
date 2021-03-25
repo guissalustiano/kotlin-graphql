@@ -18,7 +18,7 @@ import java.util.*
 
 @Component
 class ProductQuery(private val service: ProductService) : Query {
-    fun findCategories(): List<ProductEntity> {
+    fun findProducts(): List<ProductEntity> {
         return service.findAll().toList()
     }
 

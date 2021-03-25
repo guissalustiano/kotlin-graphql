@@ -1,7 +1,6 @@
 package com.example.demo.category
 
 import com.example.demo.base.DeletePayload
-import com.expediagroup.graphql.generator.annotations.GraphQLDescription
 import com.expediagroup.graphql.types.operations.Mutation
 import org.springframework.stereotype.Component
 import java.util.*

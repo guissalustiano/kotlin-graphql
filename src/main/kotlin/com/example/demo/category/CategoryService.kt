@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.*
-import reactor.core.publisher.Mono
-import reactor.core.publisher.Flux
 
 @Service
 @Transactional
@@ -19,7 +17,7 @@ class CategoryService(
     }
 
     fun findById(id: UUID): CategoryEntity {
-        return repository.findById(id).orElseThrow{CategoryNotFoundException(id)}
+        return repository.findById(id).orElseThrow { CategoryNotFoundException(id) }
     }
 
     fun save(CategoryEntity: CategoryEntity): CategoryEntity {

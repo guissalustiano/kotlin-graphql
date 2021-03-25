@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface CategoryRepository: CrudRepository<CategoryEntity, UUID> {
+interface CategoryRepository : CrudRepository<CategoryEntity, UUID> {
     fun findBySlug(slug: String): Optional<CategoryEntity>
 }

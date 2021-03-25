@@ -8,4 +8,4 @@ import javax.persistence.Entity
 data class CategoryEntity(
     var name: String,
     var slug: String? = name.toSlug(),
-): BaseEntity()
+) : BaseEntity()
