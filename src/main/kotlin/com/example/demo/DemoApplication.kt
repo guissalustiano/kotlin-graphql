@@ -20,7 +20,6 @@ class DemoApplication {
         hooks: Optional<SchemaGeneratorHooks>,
         dataFetcherFactoryProvider: KotlinDataFetcherFactoryProvider
     ): SchemaGeneratorConfig {
-        val generatorHooks = hooks.orElse(NoopSchemaGeneratorHooks)
         return SchemaGeneratorConfig(
             supportedPackages = config.packages,
             topLevelNames = topLevelNames.orElse(TopLevelNames()),
@@ -30,7 +29,6 @@ class DemoApplication {
         )
     }
 }
-
 
 
 fun main(args: Array<String>) {

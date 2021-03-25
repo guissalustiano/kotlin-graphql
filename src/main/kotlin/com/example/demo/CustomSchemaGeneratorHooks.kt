@@ -2,9 +2,12 @@ package com.example.demo
 
 import com.expediagroup.graphql.generator.hooks.SchemaGeneratorHooks
 import graphql.language.StringValue
-import graphql.schema.*
+import graphql.schema.Coercing
+import graphql.schema.GraphQLScalarType
+import graphql.schema.GraphQLType
 import java.util.*
-import kotlin.reflect.*
+import kotlin.reflect.KClass
+import kotlin.reflect.KType
 
 class CustomSchemaGeneratorHooks : SchemaGeneratorHooks {
 
